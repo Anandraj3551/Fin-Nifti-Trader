@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        function myFunction() {
+            var x = document.getElementById("menu"); 
+            
+            if(x.style.display == "block") {
+                x.style.display = "none";
+            }
+            else {
+                x.style.display = "block";
+            }
+        }
+    </script>
+
+
+
+<!-- COA2 -->
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        const apiKey = 'AIzaSyB2gt-UIOz0H84OMO72c8R0fyuobaMcI8Y';
+        const spreadsheetId = '1eYP3Qzn_nYEfLZJa9ZNvyaoWEG2z0T5ifFz9nF_Qyk8';
+
+        function fetchDataAndRenderGraph(sheetRange, graphContainerId) {
+            const url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${sheetRange}?key=${apiKey}`;
+
+            $.ajax({
+                url: url,
+                success: function(response) {
+                    const data = response.values;
+                    const xValues = [];
+                    const yValuesB = [];
+                    const yValuesC = [];
+
+                    // Assuming the data has three columns: A, B, and C values
+                    for (const row of data) {
+                        xValues.push(row[0]);
+                        yValuesB.push(row[1]);
+                        yValuesC.push(row[2]);
+                    }
+
+                    const traceB = {
+                        x: xValues,
+                        y: yValuesB,
+                        type: 'scatter',
+                        mode: 'lines',
+                        name: 'PUT SIDE',
+                        marker: { color: 'RED' }
+                    };
+
+                    const traceC = {
+                        x: xValues,
+                        y: yValuesC,
+                        type: 'scatter',
+                        mode: 'lines',
+                        name: 'CALL SIDE',
+                        marker: { color: 'green' }
+                    };
+
+                    const graphData = [traceB, traceC];
+
+                    const graphLayout = {
+                        width: 600,
+                        height: 400,
+                        
+                        
+                    };
+
+
+
+                  
+
+                    Plotly.newPlot(graphContainerId, graphData, graphLayout);
+                }
+            });
+        }
+    </script>
+
+
+
+
+
+
+     <style>
+        /* Center-align checkbox and label within each container */
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        /* Add spacing between checkbox and label */
+        .checkbox-label {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+               
+    <div class="table-wrapper"> 
+        <!-- Generate checkboxes with onclick handlers -->
+
+        <div class="checkbox-container">
+            
+            <input type="checkbox" id="18000" onclick="fetchDataAndRenderGraph('19400!A3:C500', 'graphContainer18000')">
+            <label for="18000">18000</label>
+            <div id="graphContainer18000"></div>
+        </div>
+     
+
+        <div class="checkbox-container">
+            
+            <input type="checkbox" id="18050" onclick="fetchDataAndRenderGraph('19400!E3:G500', 'graphContainer18050')">
+            <label for="18050">18050</label>
+            <div id="graphContainer18050"></div>
+        </div>
+
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="18100" onclick="fetchDataAndRenderGraph('19400!I3:K500', 'graphContainer18100')">
+            <label for="18100">18100</label>
+            <div id="graphContainer18100"></div>
+        </div>
+
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="18150" onclick="fetchDataAndRenderGraph('19400!M3:O500', 'graphContainer18150')">
+            <label for="18150">18150</label>
+            <div id="graphContainer18150"></div>
+        </div>
+
+
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="18200" onclick="fetchDataAndRenderGraph('19400!Q3:S500', 'graphContainer18200')">
+            <label for="18200">18200</label>
+            <div id="graphContainer18200"></div>
+        </div>
+
+
+
+
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="18250" onclick="fetchDataAndRenderGraph('19400!U3:W500', 'graphContainer18250')">
+            <label for="18250">18250</label>
+            <div id="graphContainer18250"></div>
+        </div>
+
+
+
+
+
+
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="18300" onclick="fetchDataAndRenderGraph('19400!Y3:AA500', 'graphContainer18300')">
+            <label for="18300">18300</label>
+            <div id="graphContainer18300"></div>
+        </div>
+
+
+
+
+
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="18350" onclick="fetchDataAndRenderGraph('19400!AC3:AE500', 'graphContainer18350')">
+            <label for="18350">18350</label>
+            <div id="graphContainer18350"></div>
+        </div>
+
+
+
+
+
+
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="18400" onclick="fetchDataAndRenderGraph('19400!AG3:AI500', 'graphContainer18400')">
+            <label for="18400">18400</label>
+            <div id="graphContainer18400"></div>
+        </div>
+
+
+
+
+
+
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="18450" onclick="fetchDataAndRenderGraph('19400!AK3:AM500', 'graphContainer18450')">
+            <label for="18450">18450</label>
+            <div id="graphContainer18450"></div>
+        </div>
+
+
+
+
+
+
+
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="18500" onclick="fetchDataAndRenderGraph('19400!AO3:AQ500', 'graphContainer18500')">
+            <label for="18500">18500</label>
+            <div id="graphContainer18500"></div>
+        </div>
+
+
+
+
+
+
+
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="18550" onclick="fetchDataAndRenderGraph('19400!AS3:AU500', 'graphContainer18550')">
+            <label for="18550">18550</label>
+            <div id="graphContainer18550"></div>
+        </div>
+
+
+
+
+
+
+
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="18600" onclick="fetchDataAndRenderGraph('19400!AW3:AY500', 'graphContainer18600')">
+            <label for="18600">18600</label>
+            <div id="graphContainer18600"></div>
+        </div>
+
+
+
+
+
+
+
+
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="18650" onclick="fetchDataAndRenderGraph('19400!BA3:BC500', 'graphContainer18650')">
+            <label for="18650">18650</label>
+            <div id="graphContainer18650"></div>
+        </div>
+
+
+
+
+
+
+
+
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="18700" onclick="fetchDataAndRenderGraph('19400!BE3:BG500', 'graphContainer18700')">
+            <label for="18700">18700</label>
+            <div id="graphContainer18700"></div>
+        </div>
+
+
+
+
+
+
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="18750" onclick="fetchDataAndRenderGraph('19400!BI3:BK500', 'graphContainer18750')">
+            <label for="18750">18750</label>
+            <div id="graphContainer18750"></div>
+        </div>
+
+
+
+
+
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="18800" onclick="fetchDataAndRenderGraph('19400!BM3:BO500', 'graphContainer18800')">
+            <label for="18800">18800</label>
+            <div id="graphContainer18800"></div>
+        </div>
+
+
+
+
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="18850" onclick="fetchDataAndRenderGraph('19400!BQ3:BS500', 'graphContainer18850')">
+            <label for="18850">18850</label>
+            <div id="graphContainer18850"></div>
+        </div>
+
+
+
+
+
+
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="18900" onclick="fetchDataAndRenderGraph('19400!BU3:BW500', 'graphContainer18900')">
+            <label for="18900">18900</label>
+            <div id="graphContainer18900"></div>
+        </div>
+
+
+
+
+
+
+
+
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="18950" onclick="fetchDataAndRenderGraph('19400!BY3:CA500', 'graphContainer18950')">
+            <label for="18950">18950</label>
+            <div id="graphContainer18950"></div>
+        </div>
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="checkbox-container">
+            
+            <input type="checkbox" id="19000" onclick="fetchDataAndRenderGraph('19400!CC3:CE500', 'graphContainer19000')">
+            <label for="19000">19000</label>
+            <div id="graphContainer19000"></div>
+        </div>
+     
+
+        <div class="checkbox-container">
+            
+            <input type="checkbox" id="19050" onclick="fetchDataAndRenderGraph('19400!CG3:CI500', 'graphContainer19050')">
+            <label for="19050">19050</label>
+            <div id="graphContainer19050"></div>
+        </div>
+
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="19100" onclick="fetchDataAndRenderGraph('19400!CK3:CM500', 'graphContainer19100')">
+            <label for="19100">19100</label>
+            <div id="graphContainer19100"></div>
+        </div>
+
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="19150" onclick="fetchDataAndRenderGraph('19400!CO3:CQ500', 'graphContainer19150')">
+            <label for="19150">19150</label>
+            <div id="graphContainer19150"></div>
+        </div>
+
+
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="19200" onclick="fetchDataAndRenderGraph('19400!CS3:CU500', 'graphContainer19200')">
+            <label for="19200">19200</label>
+            <div id="graphContainer19200"></div>
+        </div>
+
+
+
+
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="19250" onclick="fetchDataAndRenderGraph('19400!CW3:CY500', 'graphContainer19250')">
+            <label for="19250">19250</label>
+            <div id="graphContainer19250"></div>
+        </div>
+
+
+
+
+
+
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="19300" onclick="fetchDataAndRenderGraph('19400!DA3:DC500', 'graphContainer19300')">
+            <label for="19300">19300</label>
+            <div id="graphContainer19300"></div>
+        </div>
+
+
+
+
+
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="19350" onclick="fetchDataAndRenderGraph('19400!DE3:DG500', 'graphContainer19350')">
+            <label for="19350">19350</label>
+            <div id="graphContainer19350"></div>
+        </div>
+
+
+
+
+
+
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="19400" onclick="fetchDataAndRenderGraph('19400!DI3:DK500', 'graphContainer19400')">
+            <label for="19400">19400</label>
+            <div id="graphContainer19400"></div>
+        </div>
+
+
+
+
+
+
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="19450" onclick="fetchDataAndRenderGraph('19400!DM3:DO500', 'graphContainer19450')">
+            <label for="19450">19450</label>
+            <div id="graphContainer19450"></div>
+        </div>
+
+
+
+
+
+
+
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="19500" onclick="fetchDataAndRenderGraph('19400!DQ3:DS500', 'graphContainer19500')">
+            <label for="19500">19500</label>
+            <div id="graphContainer19500"></div>
+        </div>
+
+
+
+
+
+
+
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="19550" onclick="fetchDataAndRenderGraph('19400!DU3:DW500', 'graphContainer19550')">
+            <label for="19550">19550</label>
+            <div id="graphContainer19550"></div>
+        </div>
+
+
+
+
+
+
+
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="19600" onclick="fetchDataAndRenderGraph('19400!DY3:EA500', 'graphContainer19600')">
+            <label for="19600">19600</label>
+            <div id="graphContainer19600"></div>
+        </div>
+
+
+
+
+
+
+
+
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="19650" onclick="fetchDataAndRenderGraph('19400!EC3:EE500', 'graphContainer19650')">
+            <label for="19650">19650</label>
+            <div id="graphContainer19650"></div>
+        </div>
+
+
+
+
+
+
+
+
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="19700" onclick="fetchDataAndRenderGraph('19400!EG3:EI500', 'graphContainer19700')">
+            <label for="19700">19700</label>
+            <div id="graphContainer19700"></div>
+        </div>
+
+
+
+
+
+
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="19750" onclick="fetchDataAndRenderGraph('19400!EK3:EM500', 'graphContainer19750')">
+            <label for="19750">19750</label>
+            <div id="graphContainer19750"></div>
+        </div>
+
+
+
+
+
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="19800" onclick="fetchDataAndRenderGraph('19400!EO3:EQ500', 'graphContainer19800')">
+            <label for="19800">19800</label>
+            <div id="graphContainer19800"></div>
+        </div>
+
+
+
+
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="19850" onclick="fetchDataAndRenderGraph('19400!ES3:EU500', 'graphContainer19850')">
+            <label for="19850">19850</label>
+            <div id="graphContainer19850"></div>
+        </div>
+
+
+
+
+
+
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="19900" onclick="fetchDataAndRenderGraph('19400!EW3:EY500', 'graphContainer19900')">
+            <label for="19900">19900</label>
+            <div id="graphContainer19900"></div>
+        </div>
+
+
+
+
+
+
+
+
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="19950" onclick="fetchDataAndRenderGraph('19400!FA3:FC500', 'graphContainer19950')">
+            <label for="19950">19950</label>
+            <div id="graphContainer19950"></div>
+        </div>
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="checkbox-container">
+            
+            <input type="checkbox" id="20000" onclick="fetchDataAndRenderGraph('19400!FE3:FG500', 'graphContainer20000')">
+            <label for="20000">20000</label>
+            <div id="graphContainer20000"></div>
+        </div>
+     
+
+        <div class="checkbox-container">
+            
+            <input type="checkbox" id="20050" onclick="fetchDataAndRenderGraph('19400!FI3:FK500', 'graphContainer20050')">
+            <label for="20050">20050</label>
+            <div id="graphContainer20050"></div>
+        </div>
+
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="20100" onclick="fetchDataAndRenderGraph('19400!FM3:FO500', 'graphContainer20100')">
+            <label for="20100">20100</label>
+            <div id="graphContainer20100"></div>
+        </div>
+
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="20150" onclick="fetchDataAndRenderGraph('19400!FQ3:FS500', 'graphContainer20150')">
+            <label for="20150">20150</label>
+            <div id="graphContainer20150"></div>
+        </div>
+
+
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="20200" onclick="fetchDataAndRenderGraph('19400!FU3:FW500', 'graphContainer20200')">
+            <label for="20200">20200</label>
+            <div id="graphContainer20200"></div>
+        </div>
+
+
+
+
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="20250" onclick="fetchDataAndRenderGraph('19400!FY3:GA500', 'graphContainer20250')">
+            <label for="20250">20250</label>
+            <div id="graphContainer20250"></div>
+        </div>
+
+
+
+
+
+
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="20300" onclick="fetchDataAndRenderGraph('19400!GC3:GE500', 'graphContainer20300')">
+            <label for="20300">20300</label>
+            <div id="graphContainer20300"></div>
+        </div>
+
+
+
+
+
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="20350" onclick="fetchDataAndRenderGraph('19400!GG3:GI500', 'graphContainer20350')">
+            <label for="20350">20350</label>
+            <div id="graphContainer20350"></div>
+        </div>
+
+
+
+
+
+
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="20400" onclick="fetchDataAndRenderGraph('19400!GK3:GM500', 'graphContainer20400')">
+            <label for="20400">20400</label>
+            <div id="graphContainer20400"></div>
+        </div>
+
+
+
+
+
+
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="20450" onclick="fetchDataAndRenderGraph('19400!GO3:GQ500', 'graphContainer20450')">
+            <label for="20450">20450</label>
+            <div id="graphContainer20450"></div>
+        </div>
+
+
+
+
+
+
+
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="20500" onclick="fetchDataAndRenderGraph('19400!GS3:GU500', 'graphContainer20500')">
+            <label for="20500">20500</label>
+            <div id="graphContainer20500"></div>
+        </div>
+
+
+
+
+
+
+
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="20550" onclick="fetchDataAndRenderGraph('19400!GW3:GY500', 'graphContainer20550')">
+            <label for="20550">20550</label>
+            <div id="graphContainer20550"></div>
+        </div>
+
+
+
+
+
+
+
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="20600" onclick="fetchDataAndRenderGraph('19400!HA3:HC500', 'graphContainer20600')">
+            <label for="20600">20600</label>
+            <div id="graphContainer20600"></div>
+        </div>
+
+
+
+
+
+
+
+
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="20650" onclick="fetchDataAndRenderGraph('19400!HE3:HG500', 'graphContainer20650')">
+            <label for="20650">20650</label>
+            <div id="graphContainer20650"></div>
+        </div>
+
+
+
+
+
+
+
+
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="20700" onclick="fetchDataAndRenderGraph('19400!HI3:HK500', 'graphContainer20700')">
+            <label for="20700">20700</label>
+            <div id="graphContainer20700"></div>
+        </div>
+
+
+
+
+
+
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="20750" onclick="fetchDataAndRenderGraph('19400!HM3:HO500', 'graphContainer20750')">
+            <label for="20750">20750</label>
+            <div id="graphContainer20750"></div>
+        </div>
+
+
+
+
+
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="20800" onclick="fetchDataAndRenderGraph('19400!HQ3:HS500', 'graphContainer20800')">
+            <label for="20800">20800</label>
+            <div id="graphContainer20800"></div>
+        </div>
+
+
+
+
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="20850" onclick="fetchDataAndRenderGraph('19400!HU3:HW500', 'graphContainer20850')">
+            <label for="20850">20850</label>
+            <div id="graphContainer20850"></div>
+        </div>
+
+
+
+
+
+
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="20900" onclick="fetchDataAndRenderGraph('19400!HY3:IA500', 'graphContainer20900')">
+            <label for="20900">20900</label>
+            <div id="graphContainer20900"></div>
+        </div>
+
+
+
+
+
+
+
+
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="20950" onclick="fetchDataAndRenderGraph('19400!IC3:IE500', 'graphContainer20950')">
+            <label for="20950">20950</label>
+            <div id="graphContainer20950"></div>
+        </div>
+
+
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="21000" onclick="fetchDataAndRenderGraph('19400!IG3:II500', 'graphContainer21000')">
+            <label for="21000">21000</label>
+            <div id="graphContainer21000"></div>
+        </div>
+
+
+
+
+
+
+        
+        <!-- Add more checkboxes and graph containers in a similar manner -->
+    </div>
+    
+    <!-- You can keep more graph containers here -->
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script>
+        function myFunction() {
+            var x = document.getElementById("menu"); 
+            
+            if(x.style.display == "block") {
+                x.style.display = "none";
+            }
+            else {
+                x.style.display = "block";
+            }
+        }
+    </script>
+    <style>
+
+
+        #data-table {
+                    width: 60%; /* Adjust the width as needed */
+                    border-collapse: collapse;
+                    margin: auto;
+                }
+                th, td {
+                    border: 1px solid black;
+                    padding: 8px;
+                    text-align: center;
+                }
+                th {
+                    background-color: #f2f2f2;
+                    
+                }
+                .auto-refresh-toggle {
+                    text-align: right;
+                    margin-top: 10px;
+                    margin-right: 20px;
+                }
+        
+        
+        
+            </style>
+</head>
+<body>
+    <div class="table-wrapper">
+
+      
+        <div class="auto-refresh-toggle">
+            <label for="auto-refresh-checkbox">Auto Refresh:</label>
+            <input type="checkbox" id="auto-refresh-checkbox">
+        </div>
+    
+        <table id="data-table">
+            <thead>
+               
+                <th>Time</th>
+                <th>Intrday OI PCR</th>
+                <th>Overall OI PCR</th>
+                <th>Volume PCR</th>
+                <th>BANK NIFTY SPOT PRICE</th>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+    </div>
+
+
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script>
+        // Load the Google Sheets API client library
+        gapi.load('client', initClient);
+
+        // Initialize the API client library
+        function initClient() {
+            gapi.client.init({
+                apiKey: 'AIzaSyB2gt-UIOz0H84OMO72c8R0fyuobaMcI8Y',
+                discoveryDocs: ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
+            }).then(fetchData);
+        }
+
+        // Fetch data from the spreadsheet
+        function fetchData() {
+            gapi.client.sheets.spreadsheets.values.get({
+                spreadsheetId: '1PglGdnoAdRVZHsDAmknRb--L6msurD2XrOHR8awm-SM',
+                range: 'PCR GRAPH!A3:E500',
+            }).then(function(response) {
+                var values = response.result.values;
+                var tbody = document.querySelector('#data-table tbody');
+                for (var i = 0; i < values.length; i++) {
+                    var row = document.createElement('tr');
+                    for (var j = 0; j < values[i].length; j++) {
+                        var cell = document.createElement('td');
+                        cell.textContent = values[i][j];
+                        row.appendChild(cell);
+                    }
+                    tbody.appendChild(row);
+                }
+            }, function(response) {
+                console.error('Error fetching data:', response.result.error.message);
+            });
+        }
+
+
+      
+     
+    </script>
+</body>
+</html>
